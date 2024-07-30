@@ -1,0 +1,90 @@
+@extends('layout')
+
+@section('content')
+
+<div class="d-flex justify-content-between mb-3">
+    <a href="{{ redirect('guardias.index') }}" class="btn btn-dark fw-semibold rounded-0 py-1 px-3 me-2">
+        <i class="bi bi-arrow-left"></i>
+    </a>
+    <div class="align-content-center">
+        <button type="button" class="btn btn-primary fw-semibold rounded-0 py-1 px-4 me-2" data-bs-toggle="modal" data-bs-target="#modalEditar">
+            <i class="bi bi-pencil-square"></i>
+            Editar
+        </button>
+        <div class="modal fade" id="modalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="" class="modal-content rounded-0">
+                    <div class="modal-header px-4">
+                        <h1 class="modal-title fs-4" id="staticBackdropLabel">Formulario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="number" name="" id="" class="form-control rounded-0 shadow-none mb-3" placeholder="Identificación" required>
+                        <input type="text" name="" id="" class="form-control rounded-0 shadow-none mb-3" placeholder="Nombres" required>
+                        <select name="" id="" class="form-select rounded-0 shadow-none">
+                            <option value="">Estado...</option>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer justify-content-between" required>
+                        <button type="button" class="btn btn-secondary rounded-0 py-1 px-4" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary rounded-0 py-1 px-4">Modificar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button type="button" class="btn btn-danger fw-semibold rounded-0 py-1 px-3" data-bs-toggle="modal" data-bs-target="#modalEliminar">
+            <i class="bi bi-trash-fill"></i>
+            Eliminar
+        </button>
+        <div class="modal fade" id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="" class="modal-content rounded-0">
+                    <div class="modal-header px-4">
+                        <h1 class="modal-title text-danger fs-4" id="staticBackdropLabel">
+                            <i class="bi bi-exclamation-circle-fill me-2"></i>
+                            ¡Advertencia!
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="fw-normal mb-0">¿Seguro que deseas eliminar al guardia <b>John Freddy Rivera</b>?</h5>
+                    </div>
+                    <div class="modal-footer justify-content-between" required>
+                        <button type="button" class="btn btn-secondary rounded-0 py-1 px-4" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger rounded-0 py-1 px-4">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="mt-2 mb-4">
+<div class="row gap-2">
+    <div class="col-2">
+        <img src="{{ asset('user-tumbnail.jpg') }}" alt="" class="img-fluid rounded-circle shadow-sm">
+    </div>
+    <div class="col align-content-center">
+        <div class="row flex-column">
+            <div class="col mb-4">
+                <h5 class="text-black-50 mb-0">Nombres</h5>
+                <h1 class="fw-bold mb-1">John Freddy Rivera</h1>
+            </div>
+            <div class="col">
+                <div class="row gap-4">
+                    <div class="col-auto">
+                        <h5 class="text-black-50 mb-0">Identificación</h5>
+                        <h3 class="fw-normal mb-0">1.006.292.949</h3>
+                    </div>
+                    <div class="col">
+                        <h5 class="text-black-50 mb-1">Estado</h5>
+                        <span class="badge bg-success fs-6">Activo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
