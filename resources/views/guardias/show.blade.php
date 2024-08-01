@@ -1,3 +1,6 @@
+<?php
+$PAGE_NAME = "Guardia | ".$guardia->nombres
+?>
 @extends('layout')
 
 @section('content')
@@ -55,7 +58,7 @@
                 <h1 class="fw-bold mb-1">{{ $guardia->nombres }}</h1>
             </div>
             <div class="col">
-                <div class="row gap-4">
+                <div class="row gap-5">
                     <div class="col-auto">
                         <h5 class="text-black-50 mb-0">Identificación</h5>
                         <h3 class="fw-normal mb-0">{{ $guardia->identificacion }}</h3>

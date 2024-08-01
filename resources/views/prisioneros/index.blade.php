@@ -1,3 +1,6 @@
+<?php
+$PAGE_NAME = "El Redentor | Prisioneros"
+?>
 @extends('layout')
 
 @section('content')
@@ -21,12 +24,12 @@
                     <div class="modal-body">
                         <input type="text" name="nombres" class="form-control rounded-0 shadow-none mb-1" placeholder="Nombres" required>
                         <label for="fecha_nacimiento" class="fw-bold text-black-50 ms-1">Fecha de Nacimiento</label>
-                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control rounded-0 shadow-none mb-3">
-                        <textarea name="delito" class="form-control rounded-0 shadow-none mb-2" placeholder="Delito"></textarea>
+                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control rounded-0 shadow-none mb-3" required>
+                        <textarea name="delito" class="form-control rounded-0 shadow-none mb-2" placeholder="Delito" required></textarea>
                         <div class="row">
                             <div class="col">
                                 <label for="" class="fw-bold text-black-50 ms-1">Fecha de Ingreso</label>
-                                <input type="date" name="fecha_ingreso" id="" class="form-control rounded-0 shadow-none">
+                                <input type="date" name="fecha_ingreso" id="" class="form-control rounded-0 shadow-none" required>
                             </div>
                             <div class="col align-content-end">
                                 <input type="text" name="celda" class="form-control rounded-0 shadow-none" placeholder="Celda" required>
@@ -43,24 +46,31 @@
     </div>
 </div>
 <hr class="mt-2 mb-4">
-<div class="row row-cols-5">
-    @foreach ($prisioneros as $prisionero)
-    <div class="col">
-        <div class="card btn btn-light position-relative p-0">
-            <img src="{{ asset('prisioner-tumbnail.png') }}" class="card-img-top" alt="...">
-            <div class="card-body p-2">
-                <h4 class="card-title fw-bold text-start mb-2">{{ $prisionero->nombres }}</h4>
-                <hr class="mb-2">
-                <h6 class="fw-bold text-start mb-1">Delito</h6>
-                <h6 class="fw-normal text-start small mb-1">{{ $prisionero->delito }}</h6>
-                <div class="d-flex justify-content-end">
-                    <div class="badge bg-success">{{ $prisionero->celda }}</div>
+@if (count($prisioneros) > 0)
+    <div class="row row-cols-5">
+        @foreach ($prisioneros as $prisionero)
+        <div class="col">
+            <div class="card btn btn-light position-relative p-0">
+                <img src="{{ asset('prisioner-tumbnail.png') }}" class="card-img-top" alt="...">
+                <div class="card-body p-2">
+                    <h4 class="card-title fw-bold text-start mb-2">{{ $prisionero->nombres }}</h4>
+                    <hr class="mb-2">
+                    <h6 class="fw-bold text-start mb-1">Delito</h6>
+                    <h6 class="fw-normal text-start small mb-1">{{ $prisionero->delito }}</h6>
+                    <div class="d-flex justify-content-end">
+                        <div class="badge bg-success">{{ $prisionero->celda }}</div>
+                    </div>
                 </div>
+                <a href="{{ route('prisioneros.show', $prisionero) }}" class="stretched-link"></a>
             </div>
-            <a href="{{ route('prisioneros.show', $prisionero) }}" class="stretched-link"></a>
         </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
+@else
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <i class="bi bi-info-circle-fill me-2"></i> No hay ningún prisionero aún.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
 @endsection

@@ -1,3 +1,6 @@
+<?php
+$PAGE_NAME = "El Redentor | Visitantes"
+?>
 @extends('layout')
 
 @section('content')
@@ -19,9 +22,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="text" name="cedula" id="cedula" class="form-control rounded-0 shadow-none mb-3" placeholder="Cedula" required>
+                        <input type="text" name="cedula" id="cedula" class="form-control rounded-0 shadow-none mb-3" placeholder="Cedula" pattern="^[0-9]*$" required>
                         <input type="text" name="nombres" class="form-control rounded-0 shadow-none mb-3" placeholder="Nombres" required>
-                        <input type="text" name="parentesco" class="form-control rounded-0 shadow-none" placeholder="Parentesco" required>
+                        <input type="text" name="parentesco" class="form-control rounded-0 shadow-none" placeholder="Parentesco" minlength="3" required>
                     </div>
                     <div class="modal-footer justify-content-between" required>
                         <button type="button" class="btn btn-secondary rounded-0 py-1 px-4" data-bs-dismiss="modal">Cancelar</button>
@@ -33,19 +36,28 @@
     </div>
 </div>
 <hr class="mt-2 mb-4">
-<div class="row row-cols-4">
-    @foreach ($visitantes as $visitante)
-    <div class="col">
-        <div class="btn btn-light border rounded-0 w-100 position-relative shadow-sm p-3">
-            <h4 class="fw-bold text-start mb-1">{{ $visitante->nombres }}</h4>
-            <h5 class="fw-normal text-start mb-2"><i class="bi bi-person-vcard"></i> {{ $visitante->cedula }}</h5>
-            <div class="alert alert-secondary text-start rounded-0 py-2 px-3 mb-0">
-                <b>Parentesco:</b> {{ $visitante->parentesco }}
+@if (count($visitantes) > 0)
+    <div class="row row-cols-4">
+        @foreach ($visitantes as $visitante)
+        <div class="col">
+            <div class="btn btn-light border rounded-0 w-100 position-relative shadow-sm p-3">
+                <h4 class="fw-bold text-start mb-1">{{ $visitante->nombres }}</h4>
+                <h5 class="fw-normal text-start mb-2"><i class="bi bi-person-vcard"></i> {{ $visitante->cedula }}</h5>
+                <div class="alert alert-secondary text-start rounded-0 py-2 px-3 mb-0">
+                    <b>Parentesco:</b> {{ $visitante->parentesco }}
+                </div>
+                <a href="{{ route('visitantes.show', $visitante) }}" class="stretched-link"></a>
             </div>
-            <a href="{{ route('visitantes.show', $visitante) }}" class="stretched-link"></a>
         </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
+@else
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <i class="bi bi-info-circle-fill me-2"></i> No hay ningún visitante aún.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+<script src="{{ asset('js/visitantes.js') }}"></script>
 
 @endsection

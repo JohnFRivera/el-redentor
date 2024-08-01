@@ -1,3 +1,6 @@
+<?php
+$PAGE_NAME = "El Redentor | Control de Visitas"
+?>
 @extends('layout')
 
 @section('content')
@@ -22,9 +25,15 @@
                         <div class="hstack gap-3 mb-2">
                             <select name="id_prisionero" class="form-select rounded-0 shadow-none" required>
                                 <option value="">Prisionero...</option>
+                                @foreach ($prisioneros as $prisionero)
+                                <option value="{{ $prisionero->id }}">{{ $prisionero->nombres }}</option>
+                                @endforeach
                             </select>
                             <select name="id_visitante" class="form-select rounded-0 shadow-none" required>
                                 <option value="">Visitante...</option>
+                                @foreach ($visitantes as $visitante)
+                                <option value="{{ $visitante->id }}">{{ $visitante->nombres }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <!-- FECHA -->
@@ -61,14 +70,34 @@
                         <th>Prisionero</th>
                         <th>Visitante</th>
                         <th>Guardia</th>
-                        <th>Fecha de Visita</th>
+                        <th>Fecha</th>
                         <th>Hora de Inicio</th>
                         <th>Hora de Fin</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    @foreach ($visitas as $visita)
+                    <tr>
+                        <td>{{ $visita->prisioneros->nombres }}</td>
+                        <td>{{ $visita->visitantes->nombres }}</td>
+                        <td>{{ $visita->guardias->nombres }}</td>
+                        <td>{{ $visita->fecha }}</td>
+                        <td>{{ $visita->hora_inicio }}</td>
+                        <td>{{ $visita->hora_fin }}</td>
+                        <td>
+                            @if ($visita->estado == 1)
+                            <div class="badge bg-success">
+                                Aceptado
+                            </div>
+                            @else
+                            <div class="badge bg-warning">
+                                Denegado
+                            </div>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

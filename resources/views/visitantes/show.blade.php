@@ -1,3 +1,6 @@
+<?php
+$PAGE_NAME = "Visitante | ".$visitante->nombres
+?>
 @extends('layout')
 
 @section('content')

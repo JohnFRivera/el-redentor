@@ -1,3 +1,6 @@
+<?php
+$PAGE_NAME = "Prisionero | ".$prisionero->nombres
+?>
 @extends('layout')
 
 @section('content')

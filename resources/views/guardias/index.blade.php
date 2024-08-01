@@ -1,3 +1,6 @@
+<?php
+$PAGE_NAME = "El Redentor | Guardias"
+?>
 @extends('layout')
 
 @section('content')
@@ -19,7 +22,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="text" name="identificacion" id="identificacion" class="form-control rounded-0 shadow-none mb-3" placeholder="Identificación" required>
+                        <input type="text" name="identificacion" id="identificacion" class="form-control rounded-0 shadow-none mb-3" placeholder="Identificación" pattern="^[0-9]*$" required>
                         <input type="text" name="nombres" class="form-control rounded-0 shadow-none mb-3" placeholder="Nombres" required>
                         <select name="estado" class="form-select rounded-0 shadow-none" required>
                             <option value="">Estado...</option>
@@ -37,25 +40,34 @@
     </div>
 </div>
 <hr class="mt-2 mb-4">
-<div class="row row-cols-4">
-    @foreach ($guardias as $guardia)
-    <div class="col">
-        <div class="btn btn-light border rounded-0 w-100 position-relative shadow-sm p-3">
-            <h4 class="fw-bold text-start mb-1">{{ $guardia->nombres }}</h4>
-            <div class="d-flex">
-                <h5 class="fw-normal"><i class="bi bi-person-vcard"></i> {{ $guardia->identificacion }}</h5>
-                <div class="ms-3">
-                    @if ($guardia->estado == 1)
-                    <span class="badge bg-success">Activo</span>
-                    @else
-                    <span class="badge bg-warning">Inactivo</span>
-                    @endif
+@if (count($guardias) > 0)
+    <div class="row row-cols-4">
+        @foreach ($guardias as $guardia)
+        <div class="col">
+            <div class="btn btn-light border rounded-0 w-100 position-relative shadow-sm p-3">
+                <h4 class="fw-bold text-start mb-1">{{ $guardia->nombres }}</h4>
+                <div class="d-flex">
+                    <h5 class="fw-normal"><i class="bi bi-person-vcard"></i> {{ $guardia->identificacion }}</h5>
+                    <div class="ms-3">
+                        @if ($guardia->estado == 1)
+                        <span class="badge bg-success">Activo</span>
+                        @else
+                        <span class="badge bg-warning">Inactivo</span>
+                        @endif
+                    </div>
                 </div>
+                <a href="{{ route('guardias.show', $guardia) }}" class="stretched-link"></a>
             </div>
-            <a href="{{ route('guardias.show', $guardia) }}" class="stretched-link"></a>
         </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
+@else
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <i class="bi bi-info-circle-fill me-2"></i> No hay ningún guardia aún.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+<script src="{{ asset('js/guardias.js') }}"></script>
 
 @endsection

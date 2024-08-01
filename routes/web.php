@@ -6,12 +6,10 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\VisitanteController;
 use App\Http\Controllers\PrisioneroController;
-
-Route::get('/', function () {
-    return view('visitas.index');
-});
+use App\Http\Controllers\VisitaController;
 
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('guardias', GuardiaController::class);
 Route::resource('visitantes', VisitanteController::class);
 Route::resource('prisioneros', PrisioneroController::class);
+Route::resource('visitas', VisitaController::class);
