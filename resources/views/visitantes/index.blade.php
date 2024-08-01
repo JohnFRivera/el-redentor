@@ -12,7 +12,7 @@
         </button>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <form action="{{ route('guardias.store') }}" method="POST" class="modal-content rounded-0">
+                <form action="{{ route('visitantes.store') }}" method="POST" class="modal-content rounded-0">
                     @csrf
                     <div class="modal-header px-4">
                         <h1 class="modal-title fs-4" id="staticBackdropLabel">Formulario</h1>
@@ -34,16 +34,18 @@
 </div>
 <hr class="mt-2 mb-4">
 <div class="row row-cols-4">
+    @foreach ($visitantes as $visitante)
     <div class="col">
         <div class="btn btn-light border rounded-0 w-100 position-relative shadow-sm p-3">
-            <h4 class="fw-bold text-start mb-1">John Freddy Rivera</h4>
-            <h5 class="fw-normal text-start mb-2"><i class="bi bi-person-vcard"></i> 1.006.292.949</h5>
+            <h4 class="fw-bold text-start mb-1">{{ $visitante->nombres }}</h4>
+            <h5 class="fw-normal text-start mb-2"><i class="bi bi-person-vcard"></i> {{ $visitante->cedula }}</h5>
             <div class="alert alert-secondary text-start rounded-0 py-2 px-3 mb-0">
-                <b>Parentesco:</b> Madre
+                <b>Parentesco:</b> {{ $visitante->parentesco }}
             </div>
-            <a href="#sdad" class="stretched-link"></a>
+            <a href="{{ route('visitantes.show', $visitante) }}" class="stretched-link"></a>
         </div>
     </div>
+    @endforeach
 </div>
 
 @endsection

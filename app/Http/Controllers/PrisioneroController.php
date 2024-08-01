@@ -22,7 +22,7 @@ class PrisioneroController extends Controller
             'delito' => 'required',
             'celda' => 'required',
         ]);
-        Prisionero::created($request->all());
+        Prisionero::create($request->all());
         return redirect()->route('prisioneros.index');
     }
 
