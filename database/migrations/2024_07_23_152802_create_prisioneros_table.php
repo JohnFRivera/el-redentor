@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('fecha_ingreso');
             $table->string('delito');
             $table->string('celda');
+            $table->timestamps();
         });
     }
 

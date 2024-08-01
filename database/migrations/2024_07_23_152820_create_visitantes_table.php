@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('cedula');
             $table->string('nombres');
             $table->string('parentesco');
+            $table->timestamps();
         });
     }
 

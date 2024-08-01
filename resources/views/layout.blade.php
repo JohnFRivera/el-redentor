@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.1.2/b-3.1.0/b-colvis-3.1.0/b-html5-3.1.0/b-print-3.1.0/datatables.min.css" rel="stylesheet">
     <title>Gestiones</title>
 </head>
 
@@ -22,21 +23,21 @@
         <div class="row bg-dark-subtle">
             <nav class="col">
                 <ul class="nav nav-underline justify-content-center fw-semibold fs-5 gap-5">
-                    <li class="nav-item"><a href="" class="nav-link link-dark link-opacity-75 link-opacity-100-hover">
+                    <li class="nav-item"><a href="{{ route('guardias.index') }}" class="nav-link link-dark link-opacity-75 link-opacity-100-hover">
                             <i class="bi bi-shield-shaded"></i>
                             Guardias
                         </a></li>
-                    <li class="nav-item"><a href="" class="nav-link link-dark link-opacity-75 link-opacity-100-hover">
+                    <li class="nav-item"><a href="{{ route('visitantes.index') }}" class="nav-link link-dark link-opacity-75 link-opacity-100-hover">
                             <i class="bi bi-person-fill"></i>
                             Visitantes
                         </a></li>
-                    <li class="nav-item"><a href="" class="nav-link link-dark link-opacity-75 link-opacity-100-hover">
+                    <li class="nav-item"><a href="{{ route('prisioneros.index') }}" class="nav-link link-dark link-opacity-75 link-opacity-100-hover">
                             <i class="bi bi-person-square"></i>
                             Prisioneros
                         </a></li>
                     <li class="nav-item"><a href="" class="nav-link link-dark link-opacity-75 link-opacity-100-hover">
                             <i class="bi bi-people-fill"></i>
-                            Visitas
+                            Control de Visitas
                         </a></li>
                 </ul>
             </nav>

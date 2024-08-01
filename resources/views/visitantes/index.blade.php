@@ -12,15 +12,16 @@
         </button>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <form action="" class="modal-content rounded-0">
+                <form action="{{ route('guardias.store') }}" method="POST" class="modal-content rounded-0">
+                    @csrf
                     <div class="modal-header px-4">
                         <h1 class="modal-title fs-4" id="staticBackdropLabel">Formulario</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="number" name="" id="" class="form-control rounded-0 shadow-none mb-3" placeholder="Cedula" required>
-                        <input type="text" name="" id="" class="form-control rounded-0 shadow-none mb-3" placeholder="Nombres" required>
-                        <input type="text" name="" id="" class="form-control rounded-0 shadow-none" placeholder="Parentesco" required>
+                        <input type="text" name="cedula" id="cedula" class="form-control rounded-0 shadow-none mb-3" placeholder="Cedula" required>
+                        <input type="text" name="nombres" class="form-control rounded-0 shadow-none mb-3" placeholder="Nombres" required>
+                        <input type="text" name="parentesco" class="form-control rounded-0 shadow-none" placeholder="Parentesco" required>
                     </div>
                     <div class="modal-footer justify-content-between" required>
                         <button type="button" class="btn btn-secondary rounded-0 py-1 px-4" data-bs-dismiss="modal">Cancelar</button>

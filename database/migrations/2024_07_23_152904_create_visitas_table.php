@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->boolean('estado');
+            $table->timestamps();
             $table->foreign('id_prisionero')->references('id')->on('prisioneros');
             $table->foreign('id_visitante')->references('id')->on('visitantes');
             $table->foreign('id_guardia')->references('id')->on('guardias');

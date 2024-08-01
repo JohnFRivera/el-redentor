@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('identificacion')->unique();
             $table->string('nombres');
             $table->boolean('estado');
+            $table->timestamps();
         });
     }
 

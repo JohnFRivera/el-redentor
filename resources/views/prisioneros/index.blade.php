@@ -44,13 +44,13 @@
 <hr class="mt-2 mb-4">
 <div class="row row-cols-5">
     <div class="col">
-        <div class="card position-relative">
+        <div class="card btn btn-light position-relative p-0">
             <img src="{{ asset('prisioner-tumbnail.png') }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h4 class="card-title fw-bold mb-3">John Freddy Rivera</h4>
+            <div class="card-body p-2">
+                <h4 class="card-title fw-bold text-start mb-2">John Freddy Rivera</h4>
                 <hr class="mb-2">
-                <h6 class="fw-bold mb-1">Delito</h6>
-                <h6 class="fw-normal small mb-2">Lorem ipsum dolor sit amet and make up the bulk of the card's content.</h6>
+                <h6 class="fw-bold text-start mb-1">Delito</h6>
+                <h6 class="fw-normal text-start small mb-1">Lorem ipsum dolor sit amet and make up the bulk of the card's content.</h6>
                 <div class="d-flex justify-content-end">
                     <div class="badge bg-success">C41</div>
                 </div>

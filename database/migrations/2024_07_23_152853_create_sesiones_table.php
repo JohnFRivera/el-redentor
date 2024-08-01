@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sesiones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_guardia');
-            $table->dateTime('fecha');
+            $table->timestamps();
             $table->foreign('id_guardia')->references('id')->on('guardias');
         });
     }

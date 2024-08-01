@@ -20,7 +20,7 @@ class GuardiaController extends Controller
             'nombres' => 'required',
             'estado' => 'required',
         ]);
-        Guardia::created($request->all());
+        Guardia::create($request->all());
         return redirect()->route('guardias.index');
     }
 

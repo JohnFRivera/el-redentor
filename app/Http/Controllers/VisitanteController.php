@@ -20,7 +20,7 @@ class VisitanteController extends Controller
             'nombres' => 'required',
             'parentesco' => 'required',
         ]);
-        Visitante::created($request->all());
+        Visitante::create($request->all());
         return redirect()->route('visitantes.index');
     }
 
