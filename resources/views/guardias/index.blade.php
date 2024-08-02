@@ -40,7 +40,7 @@ $PAGE_NAME = "El Redentor | Guardias"
     </div>
 </div>
 <hr class="mt-2 mb-4">
-@if (count($guardias) > 0)
+@if (count($guardias ?? []) > 0)
     <div class="row row-cols-4">
         @foreach ($guardias as $guardia)
         <div class="col">
@@ -67,6 +67,7 @@ $PAGE_NAME = "El Redentor | Guardias"
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+
 
 <script src="{{ asset('js/guardias.js') }}"></script>
 
